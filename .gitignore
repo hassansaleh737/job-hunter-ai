@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.pdf
+*.docx
+*.log
+!.streamlit/config.toml
+/devpost/learner-profile.md
+
+# Locally collected dated public source data: regenerable; do not publish by default.
+/data/snapshots/demo.json
+/data/snapshots/demo_requirements.json
+
+# Local editor / environment files and user uploads
+.vscode/
+.idea/
+*.doc
+*.rtf
+*.csv
+*.key
+*.pem

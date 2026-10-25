@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Hunter AI — App Map</title>
+  <style>
+    :root { color-scheme: light; --ink:#17263a; --muted:#536579; --line:#d8e1ea; --paper:#fff; --bg:#f5f7fa; --blue:#315f83; --soft:#eaf1f6; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    main { width:min(1040px,calc(100% - 2rem)); margin:2rem auto 4rem; }
+    h1,h2,h3 { line-height:1.2; }
+    h1 { margin-bottom:.4rem; }
+    h2 { margin-top:0; }
+    code { padding:.08rem .3rem; border-radius:.3rem; background:var(--soft); overflow-wrap:anywhere; }
+    .lede,.note { color:var(--muted); }
+    .card { margin:1rem 0; padding:1.2rem; background:var(--paper); border:1px solid var(--line); border-radius:14px; }
+    .flow { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.45rem; align-items:center; margin-top:1rem; }
+    .node { min-height:6.5rem; padding:.7rem; border:1px solid #b9cad8; border-radius:10px; background:#f9fbfd; }
+    .node strong { display:block; margin-bottom:.35rem; }
+    .arrow { text-align:center; color:var(--blue); font-size:1.4rem; font-weight:700; }
+    ol.route > li { margin:.9rem 0; padding-left:.25rem; }
+    .tag { display:inline-block; padding:.15rem .5rem; border-radius:999px; background:var(--soft); color:var(--blue); font-size:.85rem; font-weight:650; }
+    .reuse { border-left:5px solid var(--blue); }
+    @media (max-width:760px) { .flow { grid-template-columns:1fr; } .arrow { transform:rotate(90deg); } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <span class="tag">Offline reference map</span>
+    <h1>Job Hunter AI</h1>
+    <p class="lede">A five-step Streamlit proof of concept that turns a reviewed CV profile and remote-job preferences into evidence-based job assessments. Skills match and eligibility remain independent so a technically relevant job is never presented as applicable without supporting eligibility evidence.</p>
+  </header>
+
+  <section class="card" aria-labelledby="pieces">
+    <h2 id="pieces">Main pieces</h2>
+    <ul>
+      <li><strong>Guided UI:</strong> five page scripts in <code>app_pages/</code>, registered by <code>streamlit_app.py</code>.</li>
+      <li><strong>Private CV path:</strong> local PDF text extraction in <code>job_hunter/cv/pdf.py</code>, structured provider extraction in <code>job_hunter/inference/client.py</code>, and session invalidation in <code>job_hunter/session.py</code>.</li>
+      <li><strong>Bounded agent path:</strong> tool planning and source orchestration in <code>job_hunter/agent/</code>, using only Remotive and the configured Greenhouse boards.</li>
+      <li><strong>Evidence decisions:</strong> deterministic skills, experience, eligibility, and ranking logic in <code>job_hunter/analysis/</code>.</li>
+      <li><strong>Repeatable demo path:</strong> public job snapshots loaded by <code>job_hunter/snapshots/loader.py</code>, always labeled with their date and non-live status.</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="flow-title">
+    <h2 id="flow-title">One real action: find evidence-based matches</h2>
+    <div class="flow" role="img" aria-label="CV upload flows through local text extraction, reviewed profile, job source tools, deterministic assessment, and evidence-backed result cards">
+      <div class="node"><strong>Upload CV</strong><code>app_pages/upload_cv.py</code><br>One Analyze CV action.</div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><strong>Extract and review</strong><code>extract_pdf_text</code><br><code>HFGateway.extract_profile</code><br>User confirms the profile.</div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><strong>Search and assess</strong><code>run_pipeline</code><br>Source tools, grounded requirements, deterministic rules.</div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><strong>Visible result</strong><code>app_pages/results.py</code><br>Separate skills and eligibility labels, evidence, and original links.</div>
+    </div>
+    <p class="note">External service boundary: extracted CV text may be sent to the disclosed Hugging Face inference provider. Job data comes from approved public source endpoints. CVs, reviewed profiles, and match results remain session-only.</p>
+  </section>
+
+  <section class="card" aria-labelledby="route-title">
+    <h2 id="route-title">Reference route: three useful stops</h2>
+    <p class="note">This route was generated from the finished source and is not presented as a completed live code tour.</p>
+    <ol class="route">
+      <li><strong>Input and privacy boundary.</strong> Open <code>app_pages/upload_cv.py</code> and search for <code>Analyze CV</code>. The button calls local PDF extraction and then <code>HFGateway.extract_profile</code> only after the disclosure and consent gate.</li>
+      <li><strong>Agent and decision boundary.</strong> Open <code>job_hunter/agent/orchestrator.py</code> and search for <code>run_pipeline</code>, then open <code>job_hunter/analysis/eligibility.py</code> at <code>evaluate_eligibility</code>. The orchestrator collects evidence; deterministic code owns the final eligibility label.</li>
+      <li><strong>Visible evidence.</strong> Open <code>app_pages/results.py</code> and search for <code>Evidence-Based Job Matches</code>. This page keeps skills match and eligibility separate and exposes restrictions, unknowns, freshness, attribution, and original links.</li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="change-title">
+    <h2 id="change-title">To change this, start here</h2>
+    <ul>
+      <li><strong>CV file acceptance or readable-text rules:</strong> <code>job_hunter/cv/pdf.py</code> → <code>extract_pdf_text</code>.</li>
+      <li><strong>Structured CV or job extraction prompts and provider error mapping:</strong> <code>job_hunter/inference/client.py</code> → <code>HFGateway</code>.</li>
+      <li><strong>Allowed Greenhouse boards and provider configuration:</strong> <code>job_hunter/config.py</code> → <code>GREENHOUSE_BOARDS</code> and <code>settings</code>.</li>
+      <li><strong>Eligibility evidence and conservative labels:</strong> <code>job_hunter/analysis/eligibility.py</code> → <code>evaluate_eligibility</code>, with regression coverage in <code>tests/unit/test_rules.py</code> and <code>tests/unit/test_final_fixes.py</code>.</li>
+      <li><strong>Result-card wording and filters:</strong> <code>app_pages/results.py</code>.</li>
+    </ul>
+  </section>
+
+  <section class="card reuse" aria-labelledby="reuse-title">
+    <h2 id="reuse-title">A practice to reuse</h2>
+    <p><strong>Keep probabilistic extraction separate from deterministic decisions.</strong> The approved principle in <code>devpost/prd.md</code> says a strong skills match does not establish eligibility. The provider extracts grounded job facts, while <code>evaluate_eligibility</code> applies explicit rules and preserves unknowns. The regression <code>test_strong_skill_match_cannot_override_location_conflict</code> proves that boundary. On another agent project, use the same pattern: let the model structure ambiguous text, validate its schema and evidence, then reserve consequential labels for small, testable rules whenever the policy can be expressed deterministically.</p>
+  </section>
+
+  <section class="card" aria-labelledby="run-title">
+    <h2 id="run-title">Run and verify</h2>
+    <p>From the repository root:</p>
+    <pre><code>uv run streamlit run streamlit_app.py
+uv run pytest</code></pre>
+    <p class="note"><strong>Source snapshot:</strong> generated from the verified working tree on 2026-10-26. No source commit existed when this map was generated; the repository was still an uncommitted initial working tree. This map can drift after later code changes and should be refreshed if shipping fixes alter the mapped behavior.</p>
+  </section>
+</main>
+</body>
+</html>
