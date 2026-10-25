@@ -2,9 +2,12 @@
 
 Status: **Open / not yet submitted**. Check boxes manually after verifying each item during `6-ship`.
 
+Official deadline: **October 26, 2026 at 5:00 PM Eastern Time**. This corresponds to **October 27, 2026 at 12:00 AM in Cairo** while Cairo is UTC+3.
+
 ## Build Review
 
-- [ ] `uv run pytest` passes on the final source in Windows.
+- [x] The approved `5-build` checklist and app map are present.
+- [ ] `uv run pytest` passes on the final publication commit in Windows.
 - [ ] Review extraction, edits, role preferences, Live Search, and Dated Snapshot in the UI.
 - [ ] Confirm a three-year CV is not automatically rejected from a role requiring two or more years.
 - [ ] Confirm no experience information maps to `Unknown`, not an invented conflict.
@@ -19,17 +22,31 @@ Status: **Open / not yet submitted**. Check boxes manually after verifying each 
 
 - [ ] `.env` remains excluded (`git check-ignore .env`).
 - [ ] All real CV PDFs, private files, local snapshots, and credentials remain unstaged.
-- [ ] README matches the final code and the repository has a license.
+- [ ] README matches the final code and the repository has a visible open-source license.
+- [ ] `devpost/scope.md`, `devpost/prd.md`, and `devpost/spec.md` are present in the public repository.
+- [ ] `devpost/learner-profile.md` remains ignored and absent from Git history.
+- [ ] Local Skill Pack or tooling folders and patch instructions are included only if deliberately approved.
 - [ ] Commit the required source, tests, documentation, and lockfile when appropriate.
 - [ ] Push to a public GitHub repository only after a staged-file and secret review.
 
-## Demo and Devpost
+## Demo Video
 
-- [ ] Record an honest video under the official hackathon time limit.
+- [ ] Record an English working demo between one minute and less than three minutes.
+- [ ] Follow `devpost/demo-runbook.md` without exposing credentials or private CV content.
 - [ ] Show only prepared, dated snapshot job results when using Snapshot mode.
 - [ ] Explain the difference between skills match and eligibility, with evidence.
-- [ ] Upload the video and confirm reviewers can view it without signing in.
-- [ ] Complete Devpost submission fields and team information.
+- [ ] Upload the video to YouTube or Vimeo and make it publicly visible.
+- [ ] Confirm the video opens without authentication and remains under three minutes.
+
+## Devpost Submission
+
+- [ ] Use the project name **Job Hunter AI**.
+- [ ] Add the public repository URL to the **Try it out** field.
+- [ ] Add learner-written English text explaining what the project does, who it is for, and what was learned.
+- [ ] Complete the required explanation of how the Devpost Learn Skill Pack was used.
+- [ ] Complete the required age-of-majority checkbox.
+- [ ] Complete every additional required field and exit-survey question shown in the authenticated form.
+- [ ] Confirm the submission describes only demonstrated behavior and does not invent URLs or results.
 - [ ] Confirm all links work and submit before the official deadline.
 
 This checklist is a shipping work plan, not evidence that any item is complete.
