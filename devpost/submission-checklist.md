@@ -7,7 +7,7 @@ Official deadline: **October 26, 2026 at 5:00 PM Eastern Time**. This correspond
 ## Build Review
 
 - [x] The approved `5-build` checklist and app map are present.
-- [ ] `uv run pytest` passes on the final publication commit in Windows.
+- [x] The complete pytest suite passes on the publication candidate in Windows (`40 passed`).
 - [ ] Review extraction, edits, role preferences, Live Search, and Dated Snapshot in the UI.
 - [ ] Confirm a three-year CV is not automatically rejected from a role requiring two or more years.
 - [ ] Confirm no experience information maps to `Unknown`, not an invented conflict.
@@ -20,13 +20,13 @@ Official deadline: **October 26, 2026 at 5:00 PM Eastern Time**. This correspond
 
 ## Git and Privacy
 
-- [ ] `.env` remains excluded (`git check-ignore .env`).
-- [ ] All real CV PDFs, private files, local snapshots, and credentials remain unstaged.
-- [ ] README matches the final code and the repository has a visible open-source license.
-- [ ] `devpost/scope.md`, `devpost/prd.md`, and `devpost/spec.md` are present in the public repository.
-- [ ] `devpost/learner-profile.md` remains ignored and absent from Git history.
-- [ ] Local Skill Pack or tooling folders and patch instructions are included only if deliberately approved.
-- [ ] Commit the required source, tests, documentation, and lockfile when appropriate.
+- [x] `.env` remains excluded (`git check-ignore .env`).
+- [x] All real CV PDFs, private files, local snapshots, and credentials remain unstaged and absent from Git history.
+- [x] README matches the final code and the repository has a visible open-source license.
+- [x] `devpost/scope.md`, `devpost/prd.md`, and `devpost/spec.md` are present in the intended public repository set.
+- [x] `devpost/learner-profile.md` remains ignored and absent from Git history.
+- [x] Local Skill Pack or tooling folders and patch instructions are excluded from the intended publication set.
+- [x] The required source, tests, documentation, and lockfile are committed.
 - [ ] Push to a public GitHub repository only after a staged-file and secret review.
 
 ## Demo Video
