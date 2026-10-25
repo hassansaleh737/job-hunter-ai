@@ -1,6 +1,6 @@
 ---
 doc: checklist
-status: draft
+status: approved
 ---
 
 # Job Hunter AI Build Checklist
@@ -56,7 +56,7 @@ Build mode: fast (retrospective verification of an existing implementation)
 
 ## Final Review
 
-- [ ] Final review complete — mechanical verification is complete; learner confirmation that the current audited build is ready to ship is still required.
+- [x] Final review complete — mechanical verification passed, feedback is resolved, and the learner explicitly confirmed that the current audited build is ready for `6-ship`.
 
 ## Code Tour and App Map
 
