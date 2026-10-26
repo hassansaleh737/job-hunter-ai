@@ -4,6 +4,8 @@ Status: **Open / not yet submitted**. Check boxes manually after verifying each 
 
 Official deadline: **October 26, 2026 at 5:00 PM Eastern Time**. This corresponds to **October 27, 2026 at 12:00 AM in Cairo** while Cairo is UTC+3.
 
+Public repository: <https://github.com/hassansaleh737/job-hunter-ai>
+
 ## Build Review
 
 - [x] The approved `5-build` checklist and app map are present.
@@ -27,7 +29,7 @@ Official deadline: **October 26, 2026 at 5:00 PM Eastern Time**. This correspond
 - [x] `devpost/learner-profile.md` remains ignored and absent from Git history.
 - [x] Local Skill Pack or tooling folders and patch instructions are excluded from the intended publication set.
 - [x] The required source, tests, documentation, and lockfile are committed.
-- [ ] Push to a public GitHub repository only after a staged-file and secret review.
+- [x] Push the reviewed publication set to the public GitHub repository without force-pushing.
 
 ## Demo Video
 
